@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Landing Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .landing {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+
+    .column img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .column h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .column p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smart Gadget</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="landing">
+    <div class="column">
+      <h1>Revolutionary Smart Gadget</h1>
+      <p>Discover the latest in tech innovation. This smart gadget is designed to make your life easier, faster, and more connected.</p>
+      <button>Buy Now</button>
+    </div>
+    <div class="column">
+      <img src="https://via.placeholder.com/400" alt="Smart Gadget">
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Smart Gadget. All rights reserved.
+  </footer>
+</body>
+</html>

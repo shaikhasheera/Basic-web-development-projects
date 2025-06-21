@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .weather-container {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .forecast {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 200px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather Forecast App</h1>
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button onclick="getWeather()">Get Forecast</button>
+
+  <div class="weather-container" id="forecast"></div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById("cityInput").value;
+      const apiKey = "Myweather04"; // Replace with your OpenWeatherMap API key
+      const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const forecastContainer = document.getElementById("forecast");
+        forecastContainer.innerHTML = "";
+
+        const forecastList = data.list.filter((item, index) => index % 8 === 0);
+
+        forecastList.forEach(item => {
+          const date = new Date(item.dt_txt);
+          const day = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+          const temp = item.main.temp;
+          const weather = item.weather[0].description;
+
+          const forecastHTML = `
+            <div class="forecast">
+              <h3>${day}</h3>
+              <p><strong>Temp:</strong> ${temp}&deg;C</p>
+              <p><strong>Condition:</strong> ${weather}</p>
+            </div>
+          `;
+
+          forecastContainer.innerHTML += forecastHTML;
+        });
+      } catch (error) {
+        document.getElementById("forecast").innerHTML = `<p>Error fetching weather data. Please try again.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
